@@ -101,7 +101,7 @@ export default function Home() {
         <div className="flex justify-center w-full">
 
           <div className={`
-              ${window.innerWidth < 800 ? "scale-[80%]" : "scale-100"}
+              ${window?.innerWidth < 800 ? "scale-[80%]" : "scale-100"}
               w-full flex items-center flex-col
               `}>
 
