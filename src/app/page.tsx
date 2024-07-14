@@ -114,7 +114,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => {
-                  if (window.innerWidth < 800) return alert("Desktop view is only available on larger screens")
+                  if (window?.innerWidth < 800) return alert("Desktop view is only available on larger screens")
                   setDevice("desktop")
                 }}
                 className={`${device === "desktop" ? "opacity-100" : "opacity-60"} duration-200`}
