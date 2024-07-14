@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Home() {
 
@@ -43,7 +44,12 @@ export default function Home() {
   }, [ref])
 
   return (
-    <main className="">
+    <motion.main
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.8 }}
+    // className="scale-90"
+    >
 
       <div className="flex gap-6 mx-auto justify-center p-8 text-sm">
 
@@ -91,10 +97,6 @@ export default function Home() {
 
       <div className="pt-52">
 
-        {/* <h1
-        className="mix-blend-soft-light text-center text-3xl md:text-5xl font-semibold"
-        >Dynamic Toast Island</h1> */}
-
         {/* device switcher */}
         <div className="flex items-center gap-4 justify-center p-6">
           <button onClick={() => setDevice("mobile")} className={`${device === "mobile" ? "opacity-100" : "opacity-60"} duration-200`}>
@@ -102,7 +104,13 @@ export default function Home() {
               <path d="M2.33594 15.875C1.16016 15.875 0.367188 15.1162 0.367188 13.9883V2.80469C0.367188 1.67676 1.16016 0.917969 2.33594 0.917969H7.70898C8.87109 0.917969 9.64355 1.67676 9.64355 2.80469V13.9883C9.64355 15.1162 8.87109 15.875 7.70898 15.875H2.33594ZM2.56152 14.501H7.45605C7.99609 14.501 8.31055 14.2002 8.31055 13.6807V3.1123C8.31055 2.59277 7.99609 2.29883 7.45605 2.29883H2.56152C2.02148 2.29883 1.70703 2.59277 1.70703 3.1123V13.6807C1.70703 14.2002 2.02148 14.501 2.56152 14.501ZM4.1543 3.85742C3.85352 3.85742 3.62109 3.625 3.62109 3.33105C3.62109 3.03711 3.85352 2.80469 4.1543 2.80469H5.87012C6.16406 2.80469 6.39648 3.03711 6.39648 3.33105C6.39648 3.625 6.16406 3.85742 5.87012 3.85742H4.1543ZM3.53906 13.9609C3.34082 13.9609 3.19043 13.8242 3.19043 13.6191C3.19043 13.4072 3.34082 13.2705 3.53906 13.2705H6.48535C6.68359 13.2705 6.82715 13.4072 6.82715 13.6191C6.82715 13.8242 6.68359 13.9609 6.48535 13.9609H3.53906Z" fill="white" />
             </svg>
           </button>
-          <button onClick={() => setDevice("desktop")} className={`${device === "desktop" ? "opacity-100" : "opacity-60"} duration-200`}>
+          <button
+            onClick={() => {
+              if(window.innerWidth < 800) return alert("Desktop view is only available on larger screens")
+              setDevice("desktop")
+            }}
+            className={`${device === "desktop" ? "opacity-100" : "opacity-60"} duration-200`}
+          >
             <svg width="21" height="12" className="size-8" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0.613281 11.0117C0.613281 10.5332 1.00293 10.1367 1.47461 10.1367H2.92383V2.07715C2.92383 1.01074 3.5459 0.450195 4.56445 0.450195H16.7871C17.8467 0.450195 18.4277 1.01074 18.4277 2.07715V10.1367H19.877C20.3486 10.1367 20.7383 10.5332 20.7383 11.0117C20.7383 11.4902 20.3486 11.8799 19.877 11.8799H1.47461C1.00293 11.8799 0.613281 11.4902 0.613281 11.0117ZM4.26367 10.1367H17.0879V2.42578C17.0879 1.99512 16.876 1.79004 16.4453 1.79004H12.6514C12.5352 1.79004 12.4805 1.83789 12.4805 1.9541V2.07031C12.4805 2.36426 12.2891 2.5625 11.9951 2.5625H9.37012C9.06934 2.5625 8.87109 2.36426 8.87109 2.07031V1.9541C8.87109 1.83789 8.81641 1.79004 8.71387 1.79004H4.90625C4.48242 1.79004 4.26367 1.99512 4.26367 2.42578V10.1367Z" fill="white" />
             </svg>
@@ -177,9 +185,18 @@ export default function Home() {
         </motion.div>
       </div>
 
-    </main>
+      <Link href={'https://github.com/kartikk-k/dynamic-toast-island'} target="_blank" className="fixed bottom-[5%] right-5 z-40 p-2 bg-black/20 rounded-full">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10.6868 2 9.38642 2.25866 8.17317 2.7612C6.95991 3.26375 5.85752 4.00035 4.92893 4.92893C3.05357 6.8043 2 9.34784 2 12C2 16.42 4.87 20.17 8.84 21.5C9.34 21.58 9.5 21.27 9.5 21V19.31C6.73 19.91 6.14 17.97 6.14 17.97C5.68 16.81 5.03 16.5 5.03 16.5C4.12 15.88 5.1 15.9 5.1 15.9C6.1 15.97 6.63 16.93 6.63 16.93C7.5 18.45 8.97 18 9.54 17.76C9.63 17.11 9.89 16.67 10.17 16.42C7.95 16.17 5.62 15.31 5.62 11.5C5.62 10.39 6 9.5 6.65 8.79C6.55 8.54 6.2 7.5 6.75 6.15C6.75 6.15 7.59 5.88 9.5 7.17C10.29 6.95 11.15 6.84 12 6.84C12.85 6.84 13.71 6.95 14.5 7.17C16.41 5.88 17.25 6.15 17.25 6.15C17.8 7.5 17.45 8.54 17.35 8.79C18 9.5 18.38 10.39 18.38 11.5C18.38 15.32 16.04 16.16 13.81 16.41C14.17 16.72 14.5 17.33 14.5 18.26V21C14.5 21.27 14.66 21.59 15.17 21.5C19.14 20.16 22 16.42 22 12C22 10.6868 21.7413 9.38642 21.2388 8.17317C20.7362 6.95991 19.9997 5.85752 19.0711 4.92893C18.1425 4.00035 17.0401 3.26375 15.8268 2.7612C14.6136 2.25866 13.3132 2 12 2Z" fill="white" />
+        </svg>
+      </Link>
+
+    </motion.main>
   );
 }
+
+
+// island components
 
 const Post = () => (
   <motion.div
