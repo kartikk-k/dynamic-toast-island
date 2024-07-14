@@ -22,7 +22,7 @@ export default function RootLayout({
         {/* theme color */}
         <meta name="theme-color" content="#E8663D" />
       </head>
-      <body className={cn(inter.className, 'bg-gradient-linear h-screen overflow-hidden text-white text-sm')}>{children}</body>
+      <body className={cn(inter.className, 'bg-gradient-linear text-white text-sm')}>{children}</body>
     </html>
   );
 }
