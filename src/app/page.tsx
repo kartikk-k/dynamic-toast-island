@@ -101,7 +101,7 @@ export default function Home() {
         <div className="flex justify-center w-full">
 
           <div className={`
-              ${window?.innerWidth < 800 ? "scale-[80%]" : "scale-100"}
+              scale-[80%] sm:scale-100
               w-full flex items-center flex-col
               `}>
 
@@ -114,7 +114,10 @@ export default function Home() {
               </button>
               <button
                 onClick={() => {
-                  if (window?.innerWidth < 800) return alert("Desktop view is only available on larger screens")
+                  // if (typeof window !== "undefined" && window.innerWidth < 800) return alert("Desktop view is only available on larger screens")
+                  if (innerWidth !== undefined && innerWidth !== null) {
+                    if (innerWidth < 800) return alert("Desktop view is only available on larger screens")
+                  }
                   setDevice("desktop")
                 }}
                 className={`${device === "desktop" ? "opacity-100" : "opacity-60"} duration-200`}
