@@ -8,7 +8,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Dynamic Island for Web",
   description: "Dynamic Island for Web using Next.js and framer-motion",
-  themeColor: "#E8663D"
 };
 
 export default function RootLayout({
