@@ -19,9 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* theme color */}
-        <meta name="theme-color" content="#E8663D" />
+        <meta name="theme-color" content="#3b3b3c" />
       </head>
-      <body className={cn(inter.className, 'bg-gradient-linear text-white text-sm')}>{children}</body>
+      <body className={cn(inter.className, 'bg-[#3b3b3c] text-white text-sm')}>{children}</body>
     </html>
   );
 }

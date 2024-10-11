@@ -52,81 +52,84 @@ export default function Home() {
     // className="h-screen w-screen overflow-hidden"
     >
 
-      <div className="flex gap-6 mx-auto justify-center p-8 text-sm">
-
-        <button className="">
-          <span
-            onClick={() => setCurrState(0)}
-            className="text-white"
-          >
-            Idle
-          </span>
+      {/* device switcher */}
+      <div className="flex items-center gap-4 w-full justify-center p-6">
+        <button onClick={() => setDevice("mobile")} className={`${device === "mobile" ? "opacity-100" : "opacity-60"} duration-200`}>
+          <svg width="10" height="16" className="size-7" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.33594 15.875C1.16016 15.875 0.367188 15.1162 0.367188 13.9883V2.80469C0.367188 1.67676 1.16016 0.917969 2.33594 0.917969H7.70898C8.87109 0.917969 9.64355 1.67676 9.64355 2.80469V13.9883C9.64355 15.1162 8.87109 15.875 7.70898 15.875H2.33594ZM2.56152 14.501H7.45605C7.99609 14.501 8.31055 14.2002 8.31055 13.6807V3.1123C8.31055 2.59277 7.99609 2.29883 7.45605 2.29883H2.56152C2.02148 2.29883 1.70703 2.59277 1.70703 3.1123V13.6807C1.70703 14.2002 2.02148 14.501 2.56152 14.501ZM4.1543 3.85742C3.85352 3.85742 3.62109 3.625 3.62109 3.33105C3.62109 3.03711 3.85352 2.80469 4.1543 2.80469H5.87012C6.16406 2.80469 6.39648 3.03711 6.39648 3.33105C6.39648 3.625 6.16406 3.85742 5.87012 3.85742H4.1543ZM3.53906 13.9609C3.34082 13.9609 3.19043 13.8242 3.19043 13.6191C3.19043 13.4072 3.34082 13.2705 3.53906 13.2705H6.48535C6.68359 13.2705 6.82715 13.4072 6.82715 13.6191C6.82715 13.8242 6.68359 13.9609 6.48535 13.9609H3.53906Z" fill="white" />
+          </svg>
         </button>
-        <button className="">
-          <span
-            onClick={() => setCurrState(1)}
-            className="text-white"
-          >
-            Face
-          </span>
-        </button>
-        <button className="">
-          <span
-            onClick={() => setCurrState(2)}
-            className="text-white"
-          >
-            Bell
-          </span>
-        </button>
-        <button className="">
-          <span
-            onClick={() => setCurrState(3)}
-            className="text-white"
-          >
-            Delete
-          </span>
-        </button>
-        <button className="">
-          <span
-            onClick={() => setCurrState(4)}
-            className="text-white"
-          >
-            Post
-          </span>
+        <button
+          onClick={() => {
+            // if (typeof window !== "undefined" && window.innerWidth < 800) return alert("Desktop view is only available on larger screens")
+            if (innerWidth !== undefined && innerWidth !== null) {
+              if (innerWidth < 800) return alert("Desktop view is only available on larger screens")
+            }
+            setDevice("desktop")
+          }}
+          className={`${device === "desktop" ? "opacity-100" : "opacity-60"} duration-200`}
+        >
+          <svg width="21" height="12" className="size-8" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.613281 11.0117C0.613281 10.5332 1.00293 10.1367 1.47461 10.1367H2.92383V2.07715C2.92383 1.01074 3.5459 0.450195 4.56445 0.450195H16.7871C17.8467 0.450195 18.4277 1.01074 18.4277 2.07715V10.1367H19.877C20.3486 10.1367 20.7383 10.5332 20.7383 11.0117C20.7383 11.4902 20.3486 11.8799 19.877 11.8799H1.47461C1.00293 11.8799 0.613281 11.4902 0.613281 11.0117ZM4.26367 10.1367H17.0879V2.42578C17.0879 1.99512 16.876 1.79004 16.4453 1.79004H12.6514C12.5352 1.79004 12.4805 1.83789 12.4805 1.9541V2.07031C12.4805 2.36426 12.2891 2.5625 11.9951 2.5625H9.37012C9.06934 2.5625 8.87109 2.36426 8.87109 2.07031V1.9541C8.87109 1.83789 8.81641 1.79004 8.71387 1.79004H4.90625C4.48242 1.79004 4.26367 1.99512 4.26367 2.42578V10.1367Z" fill="white" />
+          </svg>
         </button>
       </div>
 
       <div className="pt-52">
 
-        <div className="flex justify-center w-full">
+        <div className="flex flex-col justify-center w-full">
+
+          {/* options */}
+          <div className="flex gap-6 mx-auto justify-center p-8 text-sm">
+
+            <button className="">
+              <span
+                onClick={() => setCurrState(0)}
+                className="text-white"
+              >
+                Idle
+              </span>
+            </button>
+            <button className="">
+              <span
+                onClick={() => setCurrState(1)}
+                className="text-white"
+              >
+                Face
+              </span>
+            </button>
+            <button className="">
+              <span
+                onClick={() => setCurrState(2)}
+                className="text-white"
+              >
+                Bell
+              </span>
+            </button>
+            <button className="">
+              <span
+                onClick={() => setCurrState(3)}
+                className="text-white"
+              >
+                Delete
+              </span>
+            </button>
+            <button className="">
+              <span
+                onClick={() => setCurrState(4)}
+                className="text-white"
+              >
+                Post
+              </span>
+            </button>
+          </div>
 
           <div className={`
-              scale-[80%] sm:scale-100
+              scale-[80%] sm:scale-100 origin-top
               w-full flex items-center flex-col
               `}>
 
-            {/* device switcher */}
-            <div className="flex items-center gap-4 w-full justify-center p-6">
-              <button onClick={() => setDevice("mobile")} className={`${device === "mobile" ? "opacity-100" : "opacity-60"} duration-200`}>
-                <svg width="10" height="16" className="size-7" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2.33594 15.875C1.16016 15.875 0.367188 15.1162 0.367188 13.9883V2.80469C0.367188 1.67676 1.16016 0.917969 2.33594 0.917969H7.70898C8.87109 0.917969 9.64355 1.67676 9.64355 2.80469V13.9883C9.64355 15.1162 8.87109 15.875 7.70898 15.875H2.33594ZM2.56152 14.501H7.45605C7.99609 14.501 8.31055 14.2002 8.31055 13.6807V3.1123C8.31055 2.59277 7.99609 2.29883 7.45605 2.29883H2.56152C2.02148 2.29883 1.70703 2.59277 1.70703 3.1123V13.6807C1.70703 14.2002 2.02148 14.501 2.56152 14.501ZM4.1543 3.85742C3.85352 3.85742 3.62109 3.625 3.62109 3.33105C3.62109 3.03711 3.85352 2.80469 4.1543 2.80469H5.87012C6.16406 2.80469 6.39648 3.03711 6.39648 3.33105C6.39648 3.625 6.16406 3.85742 5.87012 3.85742H4.1543ZM3.53906 13.9609C3.34082 13.9609 3.19043 13.8242 3.19043 13.6191C3.19043 13.4072 3.34082 13.2705 3.53906 13.2705H6.48535C6.68359 13.2705 6.82715 13.4072 6.82715 13.6191C6.82715 13.8242 6.68359 13.9609 6.48535 13.9609H3.53906Z" fill="white" />
-                </svg>
-              </button>
-              <button
-                onClick={() => {
-                  // if (typeof window !== "undefined" && window.innerWidth < 800) return alert("Desktop view is only available on larger screens")
-                  if (innerWidth !== undefined && innerWidth !== null) {
-                    if (innerWidth < 800) return alert("Desktop view is only available on larger screens")
-                  }
-                  setDevice("desktop")
-                }}
-                className={`${device === "desktop" ? "opacity-100" : "opacity-60"} duration-200`}
-              >
-                <svg width="21" height="12" className="size-8" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0.613281 11.0117C0.613281 10.5332 1.00293 10.1367 1.47461 10.1367H2.92383V2.07715C2.92383 1.01074 3.5459 0.450195 4.56445 0.450195H16.7871C17.8467 0.450195 18.4277 1.01074 18.4277 2.07715V10.1367H19.877C20.3486 10.1367 20.7383 10.5332 20.7383 11.0117C20.7383 11.4902 20.3486 11.8799 19.877 11.8799H1.47461C1.00293 11.8799 0.613281 11.4902 0.613281 11.0117ZM4.26367 10.1367H17.0879V2.42578C17.0879 1.99512 16.876 1.79004 16.4453 1.79004H12.6514C12.5352 1.79004 12.4805 1.83789 12.4805 1.9541V2.07031C12.4805 2.36426 12.2891 2.5625 11.9951 2.5625H9.37012C9.06934 2.5625 8.87109 2.36426 8.87109 2.07031V1.9541C8.87109 1.83789 8.81641 1.79004 8.71387 1.79004H4.90625C4.48242 1.79004 4.26367 1.99512 4.26367 2.42578V10.1367Z" fill="white" />
-                </svg>
-              </button>
-            </div>
+
 
             <motion.div
               initial={{ width: 370, opacity: 0 }}
